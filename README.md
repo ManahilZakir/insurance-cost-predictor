@@ -1,6 +1,6 @@
 # P35 Insurance Cost Estimator
 
-🚀 **[Click Here to Open the Live Streamlit App UI](https://insurance-cost-predictor-kxxicdypywrkmyxx9hfnhj.streamlit.app/L)**
+🚀 **[Click Here to Open the Live Streamlit App UI](https://insurance-cost-predictor-sxeyvlpeauuzngzmbextev.streamlit.app/)**
 
 ---
 
