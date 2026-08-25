@@ -10,80 +10,74 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Complete Custom CSS (Stitch / Material Design Aesthetic)
+# 2. Complete Custom CSS (Monochrome & Slate Modern Theme)
 st.markdown("""
     <style>
-    /* Google Material Font Setup */
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
     html, body, [class*="css"] {
-        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
     }
 
-    /* Top Padding Adjustment */
     .block-container {
         padding-top: 2rem;
         padding-bottom: 2rem;
-        max-width: 1100px;
+        max-width: 1000px;
     }
 
-    /* Hero Banner Header */
+    /* Hero Banner Header - Dark Slate */
     .hero-banner {
-        background: linear-gradient(135deg, #1A73E8 0%, #0D47A1 100%);
+        background-color: #1E293B;
         padding: 30px;
-        border-radius: 20px;
+        border-radius: 16px;
         color: white;
         margin-bottom: 25px;
-        box-shadow: 0 10px 25px rgba(26, 115, 232, 0.2);
+        border: 1px solid #334155;
     }
     .hero-banner h1 {
         margin: 0;
         font-size: 2.2rem;
         font-weight: 700;
-        color: #ffffff !important;
+        color: #FFFFFF !important;
     }
     .hero-banner p {
         margin-top: 8px;
         margin-bottom: 0;
-        font-size: 1rem;
-        color: #E8F0FE;
+        font-size: 0.95rem;
+        color: #94A3B8;
     }
 
     /* Form Container Card */
     .stForm {
         background: #FFFFFF;
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 25px;
-        border: 1px solid #E0E0E0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        border: 1px solid #E2E8F0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
     /* Form Section Headers */
     .section-header {
-        color: #1A73E8;
+        color: #0F172A;
         font-size: 1.1rem;
         font-weight: 600;
         margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
     }
 
-    /* Modern Output Hero Card */
+    /* Output Card - Midnight Dark */
     .output-card {
-        background: linear-gradient(135deg, #0F9D58 0%, #0B8043 100%);
-        border-radius: 20px;
+        background-color: #0F172A;
+        border-radius: 16px;
         padding: 30px;
         color: white;
         text-align: center;
         margin-top: 25px;
-        box-shadow: 0 12px 30px rgba(15, 157, 88, 0.25);
-        animation: fadeIn 0.5s ease-in-out;
+        border: 1px solid #334155;
     }
     .output-card h4 {
         margin: 0;
-        color: #E6F4EA !important;
-        font-size: 1rem;
+        color: #94A3B8 !important;
+        font-size: 0.9rem;
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -91,29 +85,28 @@ st.markdown("""
     .output-card h1 {
         margin: 10px 0 0 0;
         color: #FFFFFF !important;
-        font-size: 3.2rem;
+        font-size: 3rem;
         font-weight: 700;
     }
 
     /* Sidebar Styling */
     section[data-testid="stSidebar"] {
-        background-color: #F8F9FA;
-        border-right: 1px solid #E8EAED;
+        background-color: #F8FAFC;
+        border-right: 1px solid #E2E8F0;
     }
 
-    /* Primary Button Custom Styling */
+    /* Dark Matte Action Button */
     div.stButton > button {
-        background-color: #1A73E8 !important;
+        background-color: #0F172A !important;
         color: white !important;
-        border-radius: 12px !important;
+        border-radius: 10px !important;
         padding: 12px 24px !important;
         font-weight: 600 !important;
         border: none !important;
-        transition: all 0.3s ease !important;
+        transition: all 0.2s ease !important;
     }
     div.stButton > button:hover {
-        background-color: #1557B0 !important;
-        box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3) !important;
+        background-color: #334155 !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -132,33 +125,30 @@ except Exception as e:
     st.error(f"⚠️ Could not load trained model files (`insurance_rf_model.pkl` / `model_columns.pkl`): {e}")
     model_loaded = False
 
-# 4. Sidebar Details & Model Context Panel
+# 4. Sidebar Panel
 with st.sidebar:
-    st.markdown("### 📊 Model Info & Context")
+    st.markdown("### 📊 Model Context")
     st.info("**Model Type:** Random Forest Regressor")
-    st.write("This app uses a Machine Learning model trained on demographic and lifestyle data to predict individual annual medical charges.")
+    st.write("Calculates estimated health insurance expenses based on demographic details.")
     
     st.markdown("---")
-    st.markdown("#### 💡 Feature Weight Overview")
-    st.markdown("- **Smoker Status:** Primary cost driver")
-    st.markdown("- **BMI:** Secondary influence")
-    st.markdown("- **Age:** Gradual impact")
-    
-    st.markdown("---")
-    st.caption("Developed with Python, Scikit-Learn, and Streamlit.")
+    st.markdown("#### 💡 Primary Drivers")
+    st.markdown("- **Smoker Status**")
+    st.markdown("- **BMI Value**")
+    st.markdown("- **Age Group**")
 
 # 5. Main Hero Banner UI
 st.markdown("""
     <div class="hero-banner">
         <h1>💳 Health Insurance Cost Estimator</h1>
-        <p>Provide your personal health and demographic parameters below to compute a real-time annual charge estimate.</p>
+        <p>Provide your personal health parameters below to compute an estimated annual charge.</p>
     </div>
 """, unsafe_allow_html=True)
 
 # 6. User Inputs Form Layout
 if model_loaded:
     with st.form("prediction_form"):
-        st.markdown('<div class="section-header">📋 Enter Demographic & Health Attributes</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-header">📋 Personal & Demographic Attributes</div>', unsafe_allow_html=True)
         
         col1, col2 = st.columns(2, gap="large")
         
@@ -173,38 +163,32 @@ if model_loaded:
             region = st.selectbox("US Region of Residence", ["northeast", "northwest", "southeast", "southwest"])
 
         st.markdown("---")
-        submit_button = st.form_submit_button("✨ Calculate Estimated Premium", use_container_width=True)
+        submit_button = st.form_submit_button("Calculate Estimated Premium", use_container_width=True)
 
     # 7. Prediction Logic Execution
     if submit_button:
-        # Build zero-initialized payload
         input_data = {col: 0 for col in model_columns}
         
-        # Numeric Features
         input_data['age'] = age
         input_data['bmi'] = bmi
         input_data['children'] = children
         
-        # Categorical Encodings
         if 'sex' in input_data:
             input_data['sex'] = 1 if sex == 'male' else 0
         if 'smoker' in input_data:
             input_data['smoker'] = 1 if smoker == 'yes' else 0
 
-        # One-Hot Encoded Region Mapping
         region_col = f"region_{region}"
         if region_col in input_data:
             input_data[region_col] = 1
 
-        # Predict with Model
         df_input = pd.DataFrame([input_data])
         prediction = model.predict(df_input)[0]
         
-        # Render Styled Output Display Card
         st.markdown(
             f"""
             <div class="output-card">
-                <h4>Estimated Annual Medical Coverage Charge</h4>
+                <h4>Estimated Annual Insurance Charge</h4>
                 <h1>${prediction:,.2f}</h1>
             </div>
             """, 
