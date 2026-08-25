@@ -10,7 +10,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Custom CSS (Clean Card Theme & High-Contrast Accents)
+# 2. Custom CSS Styling
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -25,7 +25,7 @@ st.markdown("""
         max-width: 950px;
     }
 
-    /* Hero Banner Header */
+    /* Hero Banner Header - Dark Slate */
     .hero-banner {
         background-color: #1E293B;
         padding: 25px 30px;
@@ -55,20 +55,22 @@ st.markdown("""
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
-    /* Action Button (High Contrast & Clear Accent Color) */
+    /* Calculate Button: Light Grey by Default -> Dark Slate Theme on Hover */
     div.stButton > button {
-        background-color: #2563EB !important;
-        color: #FFFFFF !important;
+        background-color: #F1F5F9 !important;
+        color: #334155 !important;
         border-radius: 10px !important;
         padding: 12px 24px !important;
         font-weight: 600 !important;
         font-size: 1rem !important;
-        border: none !important;
-        transition: all 0.2s ease !important;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+        border: 1px solid #CBD5E1 !important;
+        transition: all 0.3s ease !important;
     }
     div.stButton > button:hover {
-        background-color: #1D4ED8 !important;
+        background-color: #1E293B !important;
+        color: #FFFFFF !important;
+        border-color: #1E293B !important;
+        box-shadow: 0 4px 12px rgba(30, 41, 59, 0.25) !important;
     }
 
     /* Estimated Price Result Card */
@@ -79,12 +81,12 @@ st.markdown("""
         color: white;
         text-align: center;
         margin-top: 25px;
-        border: 2px solid #3B82F6;
+        border: 2px solid #334155;
         box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
     }
     .output-card h4 {
         margin: 0;
-        color: #93C5FD !important;
+        color: #94A3B8 !important;
         font-size: 0.95rem;
         font-weight: 600;
         text-transform: uppercase;
@@ -97,7 +99,7 @@ st.markdown("""
         font-weight: 700;
     }
 
-    /* Performance Card Styling (Matching Image Layout) */
+    /* Model Performance Card (Matched Theme Colors) */
     .perf-card {
         background-color: #FFFFFF;
         border: 1px solid #E2E8F0;
@@ -107,7 +109,7 @@ st.markdown("""
         box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
     .perf-title {
-        color: #854D0E;
+        color: #1E293B;
         font-size: 1.25rem;
         font-weight: 700;
         margin-bottom: 18px;
@@ -137,7 +139,7 @@ st.markdown("""
         overflow: hidden;
     }
     .progress-bar-fill {
-        background-color: #854D0E;
+        background-color: #1E293B;
         height: 100%;
         border-radius: 8px;
     }
@@ -232,7 +234,7 @@ if model_loaded:
             unsafe_allow_html=True
         )
 
-# 8. Model Performance Card (Styled exactly like image)
+# 8. Model Performance Card (Matching Overall Theme)
 r2_score_val = 90.02
 r2_score_str = f"{r2_score_val:.2f}%"
 
